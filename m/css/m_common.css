@@ -42,6 +42,15 @@ header>h1>a>img {
   transition: 0.5s;
 }
 
+/* 서브메뉴 보이는 서식 */
+.act{
+  display: block !important;
+}
+.rotate{
+  transform: rotate(180deg) !important;
+}
+
+
 /* act 클래스 서식 */
 .act_rotate01 {
   transform: rotate(45deg);
@@ -71,6 +80,9 @@ header>h1>a>img {
   top: 80px; right: 3%;
   background-color: var(--f_color02);
   width: 94%;
+  box-shadow: 0px 5px 10px rgba(3, 3, 3, .2);
+  padding-bottom: 10px;
+  z-index: 9999;
 }
 
 .gnb>ul {
