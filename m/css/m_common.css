@@ -151,6 +151,7 @@ header>h1>a>img {
   border: 1px solid var(--f_color01);
   box-shadow: 0px 1px 1px #ccc;
   display: none;
+  z-index: 10000;
 }
 
 .sub>li {
