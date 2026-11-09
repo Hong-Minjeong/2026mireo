@@ -1,0 +1,308 @@
+@charset "utf-8";
+
+header {
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1000;
+}
+
+header>h1 {
+  position: absolute;
+  width: 200px;
+  left: 3%;
+  top: 20px;
+}
+
+header>h1>a>img {
+  width: 100%;
+}
+
+.toggle {
+  width: 40px;
+  height: 40px;
+  padding: 7px 5px 0;
+  position: absolute;
+  right: 4%;
+  top: 20px;
+  cursor: pointer;
+}
+
+.toggle>span {
+  background-color: var(--f_color02);
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+/* 서브메뉴 보이는 서식 */
+.act{
+  display: block !important;
+}
+.rotate{
+  transform: rotate(180deg) !important;
+}
+
+
+/* act 클래스 서식 */
+.act_rotate01 {
+  transform: rotate(45deg);
+  background-color: var(--f_color02) !important;
+  position: absolute;
+  top: 20px;
+  left: 5px;
+}
+
+.act_none {
+  /* background-color: transparent !important; */
+  display: none !important;
+}
+
+.act_rotate02 {
+  transform: rotate(-45deg);
+  background-color: var(--f_color02) !important;
+  position: absolute;
+  top: 20px;
+  left: 5px;
+}
+
+/* 메인메뉴 서식 */
+.gnb {
+  display: none;
+  position: absolute;
+  top: 80px; right: 3%;
+  background-color: var(--f_color02);
+  width: 94%;
+  box-shadow: 0px 5px 10px rgba(3, 3, 3, .2);
+  padding-bottom: 10px;
+  z-index: 9999;
+}
+
+.gnb>ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 0;
+}
+
+.gnb>ul>li {
+  margin: 0px 14px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+}
+
+.gnb>ul>li>a {
+  color: var(--f_color01);
+  font-size: 0.8rem;
+}
+
+.gnb>ul>li>a:hover {
+  text-decoration: underline;
+}
+
+.gnb i.fa-angle-down {
+  transform: translateX(3px);
+}
+.gnb>ul>li:last-child a {
+  display: block;
+  background: var(--bg_color01);
+  transition: 0.5s;
+  color: var(--f_color02);
+}
+
+.gnb>ul>li:last-child:hover a {
+  background-color: var(--bg_color02);
+  color: var(--bg_color01);
+}
+
+/* 서브메뉴 서식 */
+/* .gnb>ul>li:first-child .sub {
+  width: 150px;
+  left: -45px;
+}
+
+.gnb>ul>li:nth-child(2) .sub {
+  width: 200px;
+  left: -68px;
+}
+
+.gnb>ul>li:nth-child(3) .sub {
+  left: -5px;
+}
+
+.gnb>ul>li:nth-child(4) .sub {
+  left: -5px;
+} */
+
+.sub {
+  /* width: 100%;
+  position: absolute;
+  background-color: #fcffd8;
+  padding: 2px;
+  border-radius: 4px;
+  border: 1px solid var(--f_color01);
+  box-shadow: 0px 1px 1px #ccc;
+  display: none;
+  z-index: 10000; */
+
+  width: 100%;
+  position: static;   /* absolute → static */
+  background-color: #fcffd8;
+  padding: 2px;
+  border-radius: 4px;
+  border: 1px solid var(--f_color01);
+  box-shadow: 0px 1px 1px #ccc;
+  display: none;
+  z-index: 10000;
+}
+
+.sub>li {
+  text-align: center;
+}
+
+.sub>li>a {
+  color: var(--f_color01);
+  line-height: 36px;
+  display: block;
+  transition: 0.3s;
+}
+
+.sub>li>a:hover {
+  background-color: var(--bg_color01);
+  color: var(--f_color02);
+}
+
+
+/* 각 콘텐츠별 제목 서식 */
+main>section h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+/* 푸터영역 서식 */
+footer {
+  width: 100%;
+  color: #fff;
+  background: #222222;
+}
+footer > p{text-align:center;line-height:60px;}
+footer > p > a{
+  color:#fff;
+  padding:4px 10px;
+  border:1px solid var(--f_color02);
+}
+
+.f_inner {
+  width:100%;padding:10px;
+  background: #2f2f2f;
+  box-sizing:border-box;
+}
+
+.f_inner > nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+  padding: 20px 0px;
+}
+
+.f_inner > nav a {
+  transition: 0.5s;
+}
+
+.f_inner > nav a:hover {
+  text-decoration: none;
+}
+
+.f_inner dl {
+  width:46%;
+  line-height: 30px;
+  margin:var(--m_auto);
+}
+
+.f_inner dl dt a {
+  color: #f36f21;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.f_inner dl dd a {
+  color: #d1d1d1;
+}
+
+.f_inner dl dd a:hover {
+  text-decoration: underline;
+}
+
+/* sns서식 */
+.f_inner dl:last-child {
+  text-align: center;
+  padding-top:10px;
+}
+
+.f_inner dl:last-child dt {
+  font-size: 1.2rem;
+}
+
+.f_inner dl i.fab {
+  font-size: 0.9rem;
+  color: #fff;
+  border: 1px solid #d1d1d1;
+  padding: 6px 8px;
+  margin: 18px 6px 0px 6px;
+  transition: 0.5s;
+}
+
+.f_inner dl dd i.fab:hover {
+  border: 1px solid #f36f21;
+  color: #f36f21;
+}
+
+/* top버튼 서식 */
+.top_btn {
+  position: fixed;
+  right: 1%;
+  bottom: 135px;
+  z-index: 1001;
+}
+
+/* 푸터하단 서식 */
+address {
+  background: var(--bg_color02);
+  text-align:center;
+}
+
+address h2 {
+  width: 150px;
+  display:inline-block;
+  padding: 20px 0px 0px 0px;
+}
+
+address h2 img {
+  width: 100%;
+}
+
+address p {
+  line-height:40px;
+}
+
+/* 탑버튼 */
+.top_btn {
+  position: fixed;
+  right: 20px;
+  bottom: 120px;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.show {
+  opacity: 1;
+}
