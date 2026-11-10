@@ -10,14 +10,11 @@ const sBtnArea = document.querySelector('#visual_slide .s_btn');
 const tab_list = document.querySelectorAll('#tab_con .tcon ul li a');
 const tcon = document.querySelectorAll('#tab_con .tcon ul li div');
 
-
 // 인덱스 값 초기화(콘트롤 버튼 클릭 시 인덱스 값이 0이 첫번째 목록이기 때문에)
 let n = 0;
 
 m_img[0].classList.add('active');
 c_btn[0].classList.add('on');
-// tab_list[0].classList.add('t_on');
-// tcon[0].style.display='block';
 
 // 3초마다 반복 호출을 위한 움직이는 슬라이드 함수
 // 오른쪽 버튼
@@ -50,69 +47,43 @@ function fadeInOut() {
 
 // 좌측버튼
 function fadeInOut2() {
-  m_img.forEach(img => {
-    // 보이는 이미지 숨기고
-    img.style.opacity = 0;
-    // img.classList.remove('active');
-  });
+  m_img.forEach(img => img.style.opacity = 0);
 
   // 콘트롤 버튼 서식 제거
-  c_btn.forEach(btn => {
-    btn.classList.remove('on');
-  });
+  c_btn.forEach(btn => btn.classList.remove('on'));
 
   // n값이 0라면(첫) 슬라이드라면)
-  if (n === 0) {
-    n = 3;
-  } else {
-    // 1씩 감소하여 이전 슬라이드가 나오게 한다.
-    n--;
-  }
+  // 아니라면 1씩 감소하여 이전 슬라이드가 나오게 한다.
+  if (n === 0) { n = 3; } else { n--; }
 
   //인덱스값(n)에 해당하는 콘트롤 버튼에 on 서식 적용
   c_btn[n].classList.add('on');
   m_img[n].style.opacity = 1;
-  // m_img[n].classList.add('active');
 }
 
 // 매3초마다 함수를 반복 호출하여 실행
-let Timer = setInterval(fadeInOut, 3000);
+let Timer;
 
-// 콘트롤 버튼에 마우스 오버시 시간을 제거
-c_btn.forEach(btn => {
-  btn.addEventListener('mouseenter', function () {
-    clearInterval(Timer);
-  });
-});
-
-// 콘트롤 버튼에 마우스 아웃시 시간을 생성
-c_btn.forEach(btn => {
-  btn.addEventListener('mouseleave', function () {
-    Timer = setInterval(fadeInOut, 3000);
-  });
-});
+function startTimer(){
+  clearInterval(Timer);
+  Timer = setInterval(fadeInOut, 3000);
+}
+startTimer();
 
 // 콘트롤 버튼을 클릭시 해당 슬라이드 이미지가 나오도록 함
 c_btn.forEach((btn, idx) => {
+  btn.addEventListener('mouseenter', clearInterval(Timer));
+  btn.addEventListener('mouseleave', startTimer);
+
   btn.addEventListener('click', function () {
     n = idx;
-    // console.log(n);
-
     // 보이는 이미지 모두 숨기고
-    m_img.forEach(img => {
-      // 보이는 이미지 숨기고
-      img.style.opacity = 0;
-      // img.classList.remove('active');
-    });
-
-    c_btn.forEach(btn => {
-      btn.classList.remove('on');
-    });
+    m_img.forEach(img => img.style.opacity = 0);
+    c_btn.forEach(btn => btn.classList.remove('on'));
 
     // 해당 n번째 이미지 나오게 하기
     c_btn[n].classList.add('on');
     m_img[n].style.opacity = 1;
-    // m_img[n].classList.add('active');
   });
 });
 
@@ -133,21 +104,9 @@ sBtnArea.addEventListener('mouseenter', function () {
 });
 
 sBtnArea.addEventListener('mouseleave', function () {
-  clearInterval(Timer);
-  Timer = setInterval(fadeInOut, 3000);
+  console.log('mouseleave 발생'); 
+  startTimer();
 });
-
-//3.탭 콘텐츠 구현하기
-// 켰을때 div 태그에 각 기능을 적용
-// tcon.forEach((el,index)=>{
-//   if(index===0){
-//     el.style.display="block";
-//     tab_list[index].classList.add('t_on');
-//   }else{
-//     el.style.display="none";
-//     tab_list[index].classList.remove('t_on');
-//   }
-// })
 
 // 사용자가 탭 메뉴를 클릭하면 이벤트가 동작하면서 모든 콘텐츠를 숨기고, 해당 탭메뉴의 콘텐츠만 보이게 한다.
 tab_list.forEach((tab, i) => {
