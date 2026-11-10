@@ -432,20 +432,20 @@ main {
   bottom: 0px;
 }
 
-.girl figcaption h6 {
+.girl figcaption a h3 {
   font-size: 20px;
   font-weight: bold;
   color: #f36f21;
   padding: 10px 0px 5px 20px;
 }
 
-.girl figcaption p {
+.girl figcaption a p {
   font-size: 10px;
   color: #ffffff;
   padding: 5px 0px 0px 20px;
 }
 
-.girl figcaption span {
+.girl figcaption a span {
   border: 1px solid #ffffff;
   font-size: 12px;
   color: #ffffff;
