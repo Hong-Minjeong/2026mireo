@@ -96,7 +96,7 @@ c_btn.forEach(btn => {
 c_btn.forEach((btn, idx) => {
   btn.addEventListener('click', function () {
     n = idx;
-    console.log(n);
+    // console.log(n);
 
     // 보이는 이미지 모두 숨기고
     m_img.forEach(img => {
@@ -183,47 +183,118 @@ tab_list.forEach((tab, i) => {
 });
 
 // 이벤트 슬라이드
-const eSlide = document.querySelector('#event article');
-const eSlideList = document.querySelectorAll('.eslide li');
-const elBtn = document.querySelector('.e_btn li:first-child');
-const erBtn = document.querySelector('.e_btn li:last-child');
-const eimg_n = eSlideList.length;
-const eimg_w = 100;
-function starteTimer() {
-  return setInterval(function () {
-    if (ecount < eimg_n) {
-      console.log(ecount);
-      eslide(ecount + 1);
-    } else {
-      eslide(0);
-    }
-  }, 3000);
-}
-// 이벤트 숫자 변수
-let eTimer = starteTimer();
-let ecount = 0;
-eSlide.style.width = (eimg_w + 0) * eimg_n - 0 + '%';
+// 5. 이벤트 슬라이드 (모바일)
+// const sWrap = document.querySelector('#event .s_wrap');
+// const sFigures = document.querySelectorAll('#event .s_wrap figure');
+// const prevBtn = document.querySelector('#event .fa-angle-left');
+// const nextBtn = document.querySelector('#event .fa-angle-right');
+// const figureLength = sFigures.length;   // 3
 
-//함수 작성
-function eslide(n) {
-  eSlide.style.left = -(eimg_w + 0) * n + '%';
-  ecount = n;
-}
+// let ecount = 0;
 
+// function eslide(i) {
+//   ecount = i;
+//   sWrap.style.left = -100 * i + '%';
+// }
 
+// // 다음 슬라이드
+// function nextSlide() {
+//   if (ecount < figureLength - 1) {
+//     eslide(ecount + 1);
+//   } else {
+//     eslide(0);
+//   }
+// }
 
-elBtn.addEventListener('click', () => {
-  console.log('왼쪽버튼');
-  clearInterval(eTimer);
+// // 이전 슬라이드
+// function prevSlide() {
+//   if (ecount > 0) {
+//     eslide(ecount - 1);
+//   } else {
+//     eslide(eimg_n - 1);
+//   }
+// }
 
-  if (ecount > 0) {
-    eslide(ecount - 1);
+// function starteTimer() {
+//   return setInterval(nextSlide, 5000);
+// }
+
+// let eTimer = starteTimer();
+
+// // 버튼 클릭 시: 타이머 리셋 후 이동
+// prevBtn.addEventListener('click', () => {
+//   clearInterval(eTimer);
+//   prevSlide();
+//   eTimer = starteTimer();
+// });
+
+// nextBtn.addEventListener('click', () => {
+//   clearInterval(eTimer);
+//   nextSlide();
+//   eTimer = starteTimer();
+// });
+
+// 수업 따라하면서 작업
+const sw = document.querySelector('#event .s_wrap');
+const moPrevBtn = document.querySelector('#event .fa-angle-left');
+const moNextBtn = document.querySelector('#event .fa-angle-right');
+let cont =0;
+
+let sn = document.querySelectorAll('#event .s_wrap figure');
+const s_total = sn.length;   // 3
+
+const fig = 100; //슬라이드 한장당 넓이는 100%
+sw.style.width = fig*s_total+'%';
+
+// 다음 슬라이드
+function nextSlide2() {
+  if (cont < s_total - 1) {
+    mslide(cont + 1);
   } else {
-    eslide(eimg_n - 1);
+    mslide(0);
   }
-  Timer = startTimer();
+}
+
+// 이전 슬라이드
+function prevSlide2() {
+  if (cont > 0) {
+    mslide(cont - 1);
+  } else {
+    mslide(s_total - 1);
+  }
+}
+
+let Timer2;
+
+// 슬라이드 이동 함수
+function mslide(n) {
+  sw.style.left = fig*-n+'%';
+  cont = n;
+  // console.log(sw.style.left);
+}
+
+function stopTimer2() {
+  clearInterval(Timer2);
+}
+
+function starteTimer2() {
+  clearInterval(Timer2);
+  Timer2 = setInterval(nextSlide2, 3000);
+}
+
+starteTimer2();
+
+// 좌측 버튼
+moPrevBtn.addEventListener('click',function(){
+  prevSlide2();
 });
 
-erBtn.addEventListener('click', () => {
-
+// 우측 버튼
+moNextBtn.addEventListener('click',function(){
+  nextSlide2();
 });
+
+moPrevBtn.addEventListener('mouseenter', stopTimer2);
+moPrevBtn.addEventListener('mouseleave', starteTimer2);
+moNextBtn.addEventListener('mouseenter', stopTimer2);
+moNextBtn.addEventListener('mouseleave', starteTimer2);

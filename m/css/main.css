@@ -159,7 +159,7 @@ main {
   background-position: center bottom;
   background-size: 85%;
   overflow: hidden;
-  padding: 20px 1.5%;
+  padding: 50px 1.5%;
   
 }
 
@@ -180,7 +180,7 @@ main {
 }
 
 .tcon ul>li>a {
-  /* display: block; */
+  display: block;
   background-color: var(--bg_color02);
   color: var(--f_color02);
   padding: 10px;
@@ -224,19 +224,22 @@ main {
 }
 
 #product article {
-  width: var(--base_width);
+  width: 100%;
   margin: var(--m_auto);
 }
-
+#product>article >h2{text-indent: 10px;}
 #product>article>ul {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
+/* 390 / 20 * 100 */
 #product>article>ul>li {
-  width: 370px;
-  padding: 0 20px;
+  width: 94%;
+  padding: 0px 3%;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 #product>article>ul>li img {
@@ -245,108 +248,80 @@ main {
 
 /* 제목 문단 서식 */
 #product>article>ul>li h3 {
-  font-size: 24px;
+  font-size: 1.5rem; height: 50px;
   font-weight: bold;
-  padding: 16px 0 10px;
+  padding: 16px 0 10px 0;
   text-align: left;
-  height: 50px;
   border-bottom: 1px solid #986c02;
 }
 
 #product>article>ul>li p {
   padding-top: 10px;
   text-align: left;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: bold;
-  line-height: 190%;
+  line-height: 180%;
   color: #986c02;
 }
 
+
 /* 이벤트 영역 */
-#event{
-  position: relative;
-  padding: 50px 0;
-}
-#event article{
-  width: 1200px;
-  margin: var(--m_auto);
-}
-
-.e_tag{
-  background-color: #f1f1f1;
-  font-size: 15px;
-  color: #999999;
-  padding: 2px 3px;
-}
-
-.eslide{
-  display: flex;
-  overflow: hidden;
-}
-.eslide>li{
-  flex: 0 0 100%;   /* li 하나가 보이는 영역 전체를 차지 */
-  min-width: 0;
-}
-.eslide>li>a{
-  display: flex;
-  gap: 50px;
-}
-.etxt_wrap{
-  margin-top: 20px;
-  flex: 1;
-}
-.eimg_wrap{
-  width: 620px;
-  height: 210px;
-  border: 1px solid #929191;
-  border-radius: 5px;
-  padding: 4px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.eimg_wrap img{
+#event{}
+#event > h2{ display: none;}
+#event .title{padding-left: 20px;}
+#event>article{
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  padding: 50px 0;
+  position: relative;
 }
-.etxt_wrap > p{
-  font-weight: bold;
-  margin: 17px 0;
-  font-size: 16px;
+
+#event .slide{width: 100%; height: 300px;
+position: relative;}
+/* 한장당 100%기 때문에 총 해서 300% */
+#event .slide .s_wrap{
+  width: 300%;
+  display: flex;
+  position: absolute;
+  left: 0px;
+  transition: 0.4s;
 }
-.etxt_wrap > p+p{
-  font-weight: 400;
-  font-size: 15px;
-  color: #777;
+
+/* flex-wrap로 영역을 벗어난 콘텐츠는 다음줄로 내리기 */
+.s_wrap figure{width: 100%; display: flex; flex-wrap: wrap;}
+.s_wrap figure img{
+  width: 100%;}
+.s_wrap figure figcaption{
+  width: 100%; padding: 30px 5%; box-sizing: border-box;}
+.s_wrap figure figcaption span{
+  background: #e8e8e8 ;
+  padding: 4px 8px;
+  font: 0.9rem;
+}
+.s_wrap figure figcaption p{
+  line-height: 30px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding-top: 10px;
+}
+.s_wrap figure figcaption .date{
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 /* 이벤트 영역 좌,우 버튼 서식 */
-.e_btn {
+#event .slide i.fas{
   position: absolute;
-  top: 52%;
+  top: 25%;
   z-index: 100;
-  width: 100%;
-}
-
-.e_btn li {
-  background-color: #efefef;
-  padding: 12px 6px;
-  margin-right: 10px;
+  font-size: 22px;
+  border: 2px solid #333;
+  padding: 10px 8px;
+  border-radius: 50%;
   cursor: pointer;
 }
+#event .slide i.fa-angle-left{ left: 1%;}
+#event .slide i.fa-angle-right{right: 1%;}
 
-.e_btn li:first-child{
-  position: absolute;
-  left: -20px;
-}
-.e_btn li:last-child{
-  position: absolute;
-  right: 3%;
-}
-
-.e_btn li i {
-  font-size: 30px;
-}
 
 /* 미에로 화이버 갤러리 서식 */
 #gallery {
@@ -358,24 +333,32 @@ main {
   font-size: 34px;
   font-weight: bold;
   padding-bottom: 20px;
+  padding-left: 20px;
   color: #fff;
 }
 
 #gallery article {
-  width: 1200px;
-  margin: 0px auto;
+  width: 100%;
+  margin: 0px;
 }
 
 .girl {
-  width: 1200px;
+  width: 88%;
+  margin: var(--m_auto);
   display: grid;
-  grid-template-rows: 270px 270px 270px;
+  grid-template-rows: 270px;
   padding: 20px;
   grid-gap: 20px;
   grid-template-areas:
-    "g01 g03 g04"
-    "g02 g03 g05"
-    "g06 g07 g08";
+    "g01"
+    "g02"
+    "g03"
+    "g04"
+    "g05"
+    "g06"
+    "g07"
+    "g08"
+    ;
 }
 
 .girl figure {
@@ -385,15 +368,11 @@ main {
 
 .girl figcaption {
   height: 80px;
-  background-color: #111111;
+  background-color: #111111d1;
   position: absolute;
   width: 100%;
-  bottom: -80px;
-  transition: 0.5s;
-}
-
-.girl figure:hover figcaption {
   bottom: 0px;
+  transition: 0.5s;
 }
 
 .girl figcaption h6 {
@@ -470,24 +449,35 @@ main {
 
 /* 갤러리 추가서식 */
 #list {
-  width: 1200px;
-  margin: 0px auto;
+  width: 88%;
+  margin: var(--m_auto);
+  padding: 0 20px;
+  box-sizing: content-box;
   text-align: center;
-  overflow: auto;
 }
 
 #list ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-gap: 20px;
 }
 
 #list li {
-  padding: 15px 0px;
+  padding: 0;
+  overflow: hidden;
+  height: 270px;
 }
 
 #list li img {
   width: 100%;
   display: block;
-  float: left;
+  object-fit: cover;
+}
+
+@media screen and(max-width:768px) {
+  /* 여백 또는 높이 설정 */
+  
+}
+
+@media screen and(max-width:375px) {
+  
 }
