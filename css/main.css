@@ -20,6 +20,9 @@ main {
   overflow: hidden;
 }
 
+#visual_slide h2{
+  display: none;
+}
 /* 슬라이드 이미지 박스 기준 설정 */
 #visual_slide div {
   position: absolute;
@@ -125,11 +128,15 @@ main {
   display: flex;
   padding: 100px 0px;
 }
+#news_con>h2, #tab_con>h2, #product>h2, #event>h2{
+  display: none;
+}
 
 #news_con .c_title>h2>span {
   font-size: 18px;
   display: block;
 }
+
 
 #news_con article:first-child {
   width: 650px;
@@ -138,6 +145,7 @@ main {
 #news_con article iframe {
   width: 650px;
   height: 320px;
+  border: none;
 }
 
 #news_con article:last-child {
