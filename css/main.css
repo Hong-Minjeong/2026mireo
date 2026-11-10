@@ -10,7 +10,7 @@ main {
   height: 100vh;
 }
 
-#mslide h2 {
+#mslide > h2, #news_con>h2, #tab_con>h2, #product>h2, #event>h2, #gallery>h2{
   display: none;
 }
 
@@ -20,7 +20,7 @@ main {
   overflow: hidden;
 }
 
-#visual_slide h2{
+#visual_slide h3{
   display: none;
 }
 /* 슬라이드 이미지 박스 기준 설정 */
@@ -128,9 +128,6 @@ main {
   display: flex;
   padding: 100px 0px;
 }
-#news_con>h2, #tab_con>h2, #product>h2, #event>h2{
-  display: none;
-}
 
 #news_con .c_title>h2>span {
   font-size: 18px;
@@ -160,7 +157,6 @@ main {
   font-size: 16px;
 }
 
-#news_con ul {}
 
 /* 넘치는 글자 보이지 않게 하기 */
 #news_con ul>li {
