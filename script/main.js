@@ -178,48 +178,55 @@ tab_list.forEach((tab, i) => {
   });
 });
 
-// 이벤트 슬라이드
-const eSlide = document.querySelector('#event article');
+// 5. 이벤트 슬라이드
+const eSlide = document.querySelector('.eslide'); 
 const eSlideList = document.querySelectorAll('.eslide li');
 const elBtn = document.querySelector('.e_btn li:first-child');
 const erBtn = document.querySelector('.e_btn li:last-child');
 const eimg_n = eSlideList.length;
 const eimg_w = 100;
-function starteTimer() {
-  return setInterval(function () {
-    if (ecount < eimg_n) {
-      console.log(ecount);
-      eslide(ecount + 1);
-    } else {
-      eslide(0);
-    }
-  }, 3000);
-}
-// 이벤트 숫자 변수
-let eTimer = starteTimer();
+
 let ecount = 0;
-eSlide.style.width = (eimg_w + 0) * eimg_n - 0 + '%';
 
-//함수 작성
+// 슬라이드 이동 함수
 function eslide(n) {
-  eSlide.style.left = -(eimg_w + 0) * n + '%';
   ecount = n;
+  eSlide.style.transform = `translateX(${-100 * n}%)`;
 }
 
+// 다음 슬라이드
+function nextSlide() {
+  if (ecount < eimg_n - 1) {
+    eslide(ecount + 1);
+  } else {
+    eslide(0);
+  }
+}
 
-
-elBtn.addEventListener('click', () => {
-  console.log('왼쪽버튼');
-  clearInterval(eTimer);
-
+// 이전 슬라이드
+function prevSlide() {
   if (ecount > 0) {
     eslide(ecount - 1);
   } else {
     eslide(eimg_n - 1);
   }
-  Timer = startTimer();
+}
+
+function starteTimer() {
+  return setInterval(nextSlide, 5000);
+}
+
+let eTimer = starteTimer();
+
+// 버튼 클릭 시: 타이머 리셋 후 이동
+elBtn.addEventListener('click', () => {
+  clearInterval(eTimer);
+  prevSlide();
+  eTimer = starteTimer();
 });
 
 erBtn.addEventListener('click', () => {
-
+  clearInterval(eTimer);
+  nextSlide();
+  eTimer = starteTimer();
 });
