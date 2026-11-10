@@ -292,6 +292,7 @@ main {
 #event article{
   width: 1200px;
   margin: var(--m_auto);
+  overflow: hidden;  
 }
 
 .e_tag{
@@ -303,7 +304,7 @@ main {
 
 .eslide{
   display: flex;
-  overflow: hidden;
+  transition: transform 0.5s ease; 
 }
 .eslide>li{
   flex: 0 0 100%;   /* li 하나가 보이는 영역 전체를 차지 */
@@ -311,15 +312,15 @@ main {
 }
 .eslide>li>a{
   display: flex;
-  gap: 50px;
+  gap: 60px;
 }
 .etxt_wrap{
   margin-top: 20px;
   flex: 1;
 }
 .eimg_wrap{
-  width: 620px;
-  height: 210px;
+  width: 700px;
+  height: 240px;
   border: 1px solid #929191;
   border-radius: 5px;
   padding: 4px;
@@ -346,14 +347,16 @@ main {
 .e_btn {
   position: absolute;
   top: 52%;
+  left: 0;
+  right: 0;
+  margin: 0 auto; 
   z-index: 100;
-  width: 100%;
+  width: 1200px;
 }
 
 .e_btn li {
   background-color: #efefef;
   padding: 12px 6px;
-  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -363,7 +366,7 @@ main {
 }
 .e_btn li:last-child{
   position: absolute;
-  right: 3%;
+  right: 20px;
 }
 
 .e_btn li i {
